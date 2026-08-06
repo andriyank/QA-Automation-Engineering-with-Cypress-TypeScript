@@ -39,7 +39,7 @@ Automation works best for flows that are repeated often and have predictable out
 | [VS Code](https://code.visualstudio.com) | Code editor for writing tests |
 | [Node.js](https://nodejs.org) | Runs JavaScript/TypeScript outside the browser (required before installing Cypress) |
 | [Cypress](https://www.cypress.io) | Automation testing tool for web applications |
-| TypeScript | Language used to write test scripts, a "stricter" version of JavaScript |
+| [TypeScript](https://www.typescriptlang.org) | Language used to write test scripts, a "stricter" version of JavaScript |
 
 ## Folder Structure
 
@@ -156,6 +156,14 @@ describe('Failed Login', () => {
 
 ![Run finished summary](./screenshots/06-run-finished-summary.png)
 
+---
+
+## References
+ 
+- [Cypress Documentation](https://docs.cypress.io)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs)
+- [Node.js Documentation](https://nodejs.org/en/docs)
+- [SauceDemo](https://www.saucedemo.com/) — demo application used for the test scenarios
 ---
 
 Built as a practical demonstration of QA Automation Testing skills using Cypress + TypeScript.
