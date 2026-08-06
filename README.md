@@ -7,7 +7,7 @@ This repo is designed to showcase practical automation testing skills: structuri
 ## Table of Contents
 
 - [About This Repo](#about-this-repo)
-- [What You'll Learn](#what-this-project-covers)
+- [What This Project Covers](#what-this-project-covers)
 - [Tools Used](#tools-used)
 - [Folder Structure](#folder-structure)
 - [Running the Project](#running-the-project)
@@ -80,38 +80,42 @@ belajar-cypress/
    ```
 
 ## Example Tests
-
+ 
 The case study in this repo uses [SauceDemo](https://www.saucedemo.com/), a demo e-commerce site made specifically for practicing automation testing.
-
+ 
+**1. `login.cy.ts`**
+ 
 ```typescript
 describe('Login Feature', () => {
   it('can log in with a valid account', () => {
     cy.visit('https://www.saucedemo.com/')
-
+ 
     cy.get('#user-name').type('standard_user')
     cy.get('#password').type('secret_sauce')
     cy.get('#login-button').click()
-
+ 
+    // Assert
     cy.url().should('include', '/inventory')
     cy.get('.title').should('have.text', 'Products')
   })
 })
 ```
-
+ 
 Demo account used: `standard_user` / `secret_sauce`.
-
-Besides the successful scenario, it's also important to test **negative** scenarios — for example, making sure the app correctly rejects a wrong password:
-
+ 
+**2. `produk.cy.ts`**
+ 
 ```typescript
-describe('Failed Login', () => {
-  it('rejects an incorrect password', () => {
-    cy.visit('https://www.saucedemo.com/')
-
+describe('Product Page', () => {
+  beforeEach(() => {              // runs
+    cy.visit('https://www.saucedemo.com/')  // before each test
     cy.get('#user-name').type('standard_user')
-    cy.get('#password').type('wrong_password')
+    cy.get('#password').type('secret_sauce')
     cy.get('#login-button').click()
-
-    cy.get('[data-test="error"]').should('be.visible')
+  })
+ 
+  it('displays 6 products', () => {
+    cy.get('.inventory_item').should('have.length', 6)
   })
 })
 ```
